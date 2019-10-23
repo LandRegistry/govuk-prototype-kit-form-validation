@@ -1,0 +1,206 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        example form
+      </h1>
+      <p class="govuk-body-l">
+        All the input components, with validation 
+      </p>
+
+      <form action="/form-handler" method="post" novalidate>
+
+	      <!-- text input -->
+	      <h2 class="govuk-heading-l">Text input</h2>
+	      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+	      {{ govukInput({
+				  label: {
+				    text: "Your name"
+				  },
+				  id: "full-name",
+				  name: "full-name"
+				}) }}
+
+
+				<!-- radio group -->
+				<h2 class="govuk-heading-l">Radio buttons (inline)</h2>
+				{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+				{{ govukRadios({
+				  classes: "govuk-radios--inline",
+				  idPrefix: "changed-name",
+				  name: "changed-name",
+				  fieldset: {
+				    legend: {
+				      text: "Have you changed your name?",
+				      isPageHeading: false,
+				      classes: "govuk-fieldset__legend--m"
+				    }
+				  },
+				  hint: {
+				    text: "This includes changing your last name or spelling your name differently."
+				  },
+				  items: [
+				    {
+				      value: "yes",
+				      text: "Yes"
+				    },
+				    {
+				      value: "no",
+				      text: "No"
+				    }
+				  ]
+				}) }}
+
+				<!-- checkboxes  -->
+				<h2 class="govuk-heading-l">Checkboxes</h2>
+				{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+				{{ govukCheckboxes({
+				  idPrefix: "waste",
+				  name: "waste",
+				  fieldset: {
+				    legend: {
+				      text: "Which types of waste do you transport?",
+				      isPageHeading: false,
+				      classes: "govuk-fieldset__legend--m"
+				    }
+				  },
+				  hint: {
+				    text: "Select all that apply."
+				  },
+				  items: [
+				    {
+				      value: "carcasses",
+				      text: "Waste from animal carcasses"
+				    },
+				    {
+				      value: "mines",
+				      text: "Waste from mines or quarries"
+				    },
+				    {
+				      value: "farm",
+				      text: "Farm or agricultural waste"
+				    }
+				  ]
+				}) }}
+
+
+				<!-- textarea  -->
+				<h2 class="govuk-heading-l">Textarea</h2>
+				{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+				{{ govukTextarea({
+				  name: "more-detail",
+				  id: "more-detail",
+				  label: {
+				    text: "Can you provide more detail?"
+				  },
+				  hint: {
+				    text: "Do not include personal or financial information, like your National Insurance number or credit card details."
+				  }
+				}) }}
+
+				<!-- date input  -->
+				<h2 class="govuk-heading-l">Date input</h2>
+				{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+				{{ govukDateInput({
+				  id: "passport-issued",
+				  namePrefix: "passport-issued",
+				  fieldset: {
+				    legend: {
+				      text: "When was your passport issued?",
+				      isPageHeading: false,
+				      classes: "govuk-fieldset__legend--m"
+				    }
+				  },
+				  hint: {
+				    text: "For example, 12 11 2007"
+				  }
+				}) }}
+
+
+				<!-- fieldset  -->
+				<h2 class="govuk-heading-l">Fieldset</h2>
+				<!-- {% from "govuk/components/input/macro.njk" import govukInput %} -->
+				{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+				{% call govukFieldset({
+				  legend: {
+				    text: "What is your address?",
+				    classes: "govuk-fieldset__legend--m",
+				    isPageHeading: true
+				  }
+				}) %}
+
+				  {{ govukInput({
+				    label: {
+				      html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+				    },
+				    id: "address-line-1",
+				    name: "address-line-1"
+				  }) }}
+
+				  {{ govukInput({
+				    label: {
+				      html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+				    },
+				    id: "address-line-2",
+				    name: "address-line-2"
+				  }) }}
+
+				  {{ govukInput({
+				    label: {
+				      text: "Town or city"
+				    },
+				    classes: "govuk-!-width-two-thirds",
+				    id: "address-town",
+				    name: "address-town"
+				  }) }}
+
+				  {{ govukInput({
+				    label: {
+				      text: "County"
+				    },
+				    classes: "govuk-!-width-two-thirds",
+				    id: "address-county",
+				    name: "address-county"
+				  }) }}
+
+				  {{ govukInput({
+				    label: {
+				      text: "Postcode"
+				    },
+				    classes: "govuk-input--width-10",
+				    id: "address-postcode",
+				    name: "address-postcode"
+				  }) }}
+
+				{% endcall %}
+
+
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+
+
+    </div>
+</div>
+
+{% endblock %}
