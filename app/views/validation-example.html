@@ -235,15 +235,10 @@
       </form>
 
       <script type="application/json" id="my-form-validation">
-			  {
+			  { 		  	
 			  	"full-name": {
 			      "presence": {
 			        "message": "^you must provide your name"
-			      }
-			    },
-			    "sort": {
-			      "presence": {
-			        "message": "^please select a thing"
 			      }
 			    },
 			    "changed-name": {
@@ -256,6 +251,20 @@
 			        "message": "^you must select a type of waste"
 			      }
 			    },
+			    "sort": {
+			      "presence": {
+			        "message": "^please select a thing"
+			      }
+			    },
+			    "address-county": {
+			    	"presence": {
+			        "message": "^we need the county"
+			      },
+				    "length": {
+				      "minimum": 3,
+				      "tooShort": "^must be a county name"
+				    }
+				  },
 			    "address-postcode": {
 			      "presence": {
 			        "message": "^Enter your postcode for this application"
