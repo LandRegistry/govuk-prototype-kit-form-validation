@@ -4,5 +4,5 @@ validate.validators.postcode = function(value, options, key, attributes) {
  console.log(options);
  console.log(key);
  console.log(attributes);
- return "is totally wrong";
+ return "^postcode format is totally wrong";
 };
