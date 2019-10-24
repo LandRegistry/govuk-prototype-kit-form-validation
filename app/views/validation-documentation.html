@@ -13,199 +13,33 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        example form
+        Add validation to your prototype
       </h1>
       <p class="govuk-body-l">
-        How to add validation code and rules
-      </p>
+			There are various types of validation you can do - for example, to ensure the field isn't blank, if a checkbox or radio button has been selected, if what's entered is long enough, if it's a pattern like a postcode.</p>
+      <p>If you want to constrain or validate how much text can be inputted - there are also other ways to do this, such as setting a field length attribute (minlength or maxlength), or using the character count govuk code for the text area.</p>
+      <p>The validation uses the javascript library validate.js, which contains all these <a href="https://validatejs.org/#validators">standard validators and the ability to create custom validation rules</a>.  The documentation can be hard to read - to translate into how to use in this kit, so we've included common examples.</p>
+      <p>If you need help, ask Ros or Andy.</p>
+      <p>If you find a bug, make a new example, or can improve this documentation - <a href="https://github.com/LandRegistry/govuk-prototype-kit-form-validation">please grab it, and merge</a> your lovely improvement in.</p> 
 
       <h2 class="govuk-heading-l">Adding the validation code to the kit</h2>
-      <p>Files and lines of code to add to the kit to enable form field validation</p>
+      <p>Firstly you need to add some files and lines of code into the core of the kit</p>
 
       <h2 class="govuk-heading-l">Adding validation rules to an imput field</h2>
-      <p>There are various types of validation you can do - for example, to ensure the field isn't blank, if a checkbox or radio button has been selected, if it's all numbers, if it's a pattern like a postcode</p>
-      <p>If you want to validate or constrain how much text can be inputted - there are other standard methods to do this, such as setting a field length attribute (minlength or maxlength, or using the character count govuk code for the text area.
+      <p>Now your are ready to add validation to your individual form pages</p>
 
+      <h3 class="govuk-heading-m">Example input fields and types of validation</h3>
 
-      <form action="/form-handler" method="post" novalidate>
+			<ul class="govuk-list govuk-list--bullet">
+			  <li>Text input: <br>is not empty, length, email address, passwords match</li>
+			  <li>Radios: <br>one has been selected</li>
+			  <li>Checkboxes: <br>one has been selected</li>
+			  <li>Textarea: <br>is not empty</li>
+			  <li>Select: <br>an item has been selected</li>
+			  <li>Date input pattern: <br>fields are not empty/date is valid</li>
+			  <li>Fieldset - multiple fields like address: <br>fields are not empty, is a postcode</li>
+			</ul>
 
-	      <!-- text input -->
-	      <h3 class="govuk-heading-m">Text input</h3>
-	      {% from "govuk/components/input/macro.njk" import govukInput %}
-
-	      {{ govukInput({
-				  label: {
-				    text: "Your name"
-				  },
-				  id: "full-name",
-				  name: "full-name"
-				}) }}
-
-
-				<!-- radio group -->
-				<h3 class="govuk-heading-m">Radio buttons (inline)</h3>
-				{% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-				{{ govukRadios({
-				  classes: "govuk-radios--inline",
-				  idPrefix: "changed-name",
-				  name: "changed-name",
-				  fieldset: {
-				    legend: {
-				      text: "Have you changed your name?",
-				      isPageHeading: false,
-				      classes: "govuk-fieldset__legend--m"
-				    }
-				  },
-				  hint: {
-				    text: "This includes changing your last name or spelling your name differently."
-				  },
-				  items: [
-				    {
-				      value: "yes",
-				      text: "Yes"
-				    },
-				    {
-				      value: "no",
-				      text: "No"
-				    }
-				  ]
-				}) }}
-
-				<!-- checkboxes  -->
-				<h3 class="govuk-heading-m">Checkboxes</h3>
-				{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-
-				{{ govukCheckboxes({
-				  idPrefix: "waste",
-				  name: "waste",
-				  fieldset: {
-				    legend: {
-				      text: "Which types of waste do you transport?",
-				      isPageHeading: false,
-				      classes: "govuk-fieldset__legend--m"
-				    }
-				  },
-				  hint: {
-				    text: "Select all that apply."
-				  },
-				  items: [
-				    {
-				      value: "carcasses",
-				      text: "Waste from animal carcasses"
-				    },
-				    {
-				      value: "mines",
-				      text: "Waste from mines or quarries"
-				    },
-				    {
-				      value: "farm",
-				      text: "Farm or agricultural waste"
-				    }
-				  ]
-				}) }}
-
-
-				<!-- textarea  -->
-				<h3 class="govuk-heading-m">Textarea</h3>
-				{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
-
-				{{ govukTextarea({
-				  name: "more-detail",
-				  id: "more-detail",
-				  label: {
-				    text: "Can you provide more detail?"
-				  },
-				  hint: {
-				    text: "Do not include personal or financial information, like your National Insurance number or credit card details."
-				  }
-				}) }}
-
-				<!-- date input  -->
-				<h3 class="govuk-heading-m">Date input</h3>
-				{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
-
-				{{ govukDateInput({
-				  id: "passport-issued",
-				  namePrefix: "passport-issued",
-				  fieldset: {
-				    legend: {
-				      text: "When was your passport issued?",
-				      isPageHeading: false,
-				      classes: "govuk-fieldset__legend--m"
-				    }
-				  },
-				  hint: {
-				    text: "For example, 12 11 2007"
-				  }
-				}) }}
-
-
-				<!-- fieldset  -->
-				<h3 class="govuk-heading-m">Fieldset</h3>
-				<!-- {% from "govuk/components/input/macro.njk" import govukInput %} -->
-				{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
-
-				{% call govukFieldset({
-				  legend: {
-				    text: "What is your address?",
-				    classes: "govuk-fieldset__legend--m",
-				    isPageHeading: true
-				  }
-				}) %}
-
-				  {{ govukInput({
-				    label: {
-				      html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
-				    },
-				    id: "address-line-1",
-				    name: "address-line-1"
-				  }) }}
-
-				  {{ govukInput({
-				    label: {
-				      html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
-				    },
-				    id: "address-line-2",
-				    name: "address-line-2"
-				  }) }}
-
-				  {{ govukInput({
-				    label: {
-				      text: "Town or city"
-				    },
-				    classes: "govuk-!-width-two-thirds",
-				    id: "address-town",
-				    name: "address-town"
-				  }) }}
-
-				  {{ govukInput({
-				    label: {
-				      text: "County"
-				    },
-				    classes: "govuk-!-width-two-thirds",
-				    id: "address-county",
-				    name: "address-county"
-				  }) }}
-
-				  {{ govukInput({
-				    label: {
-				      text: "Postcode"
-				    },
-				    classes: "govuk-input--width-10",
-				    id: "address-postcode",
-				    name: "address-postcode"
-				  }) }}
-
-				{% endcall %}
-
-
-
-        <button class="govuk-button" data-module="govuk-button">
-          Continue
-        </button>
-
-      </form>
 
 
     </div>
