@@ -19,7 +19,7 @@
         All the input components, with validation 
       </p>
 
-      <form action="/form-handler" method="post" novalidate>
+      <form action="/form-handler" method="post" novalidate data-validate='my-form-validation'>
 
 	      <!-- text input -->
 	      <h2 class="govuk-heading-l">Text input</h2>
@@ -114,7 +114,7 @@
 				}) }}
 
 				<!-- date input  -->
-				<h2 class="govuk-heading-l">Date input</h2>
+<!-- 				<h2 class="govuk-heading-l">Date input</h2>
 				{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
 
 				{{ govukDateInput({
@@ -130,8 +130,43 @@
 				  hint: {
 				    text: "For example, 12 11 2007"
 				  }
-				}) }}
+				}) }} -->
 
+
+				<!-- Select  -->
+				<h2 class="govuk-heading-l">Select</h2>
+				{% from "govuk/components/select/macro.njk" import govukSelect %}
+
+				{{ govukSelect({
+				  id: "sort",
+				  name: "sort",
+				  label: {
+				    text: "Sort by"
+				  },
+				  items: [
+				    {
+				      value: "",
+				      text: "Please select",
+				      selected: true
+				    },
+				    {
+				      value: "published",
+				      text: "Recently published"
+				    },
+				    {
+				      value: "updated",
+				      text: "Recently updated"
+				    },
+				    {
+				      value: "views",
+				      text: "Most views"
+				    },
+				    {
+				      value: "comments",
+				      text: "Most comments"
+				    }
+				  ]
+				}) }}
 
 				<!-- fieldset  -->
 				<h2 class="govuk-heading-l">Fieldset</h2>
@@ -198,6 +233,38 @@
         </button>
 
       </form>
+
+      <script type="application/json" id="my-form-validation">
+			  {
+			  	"full-name": {
+			      "presence": {
+			        "message": "^you must provide your name"
+			      }
+			    },
+			    "sort": {
+			      "presence": {
+			        "message": "^please select a thing"
+			      }
+			    },
+			    "changed-name": {
+			      "presence": {
+			        "message": "^you must say if you have changed your name"
+			      }
+			    },
+			    "waste": {
+			      "presence": {
+			        "message": "^you must select a type of waste"
+			      }
+			    },
+			    "address-postcode": {
+			      "presence": {
+			        "message": "^Enter your postcode for this application"
+			      },
+			      "postcode":true
+			    }
+			  }
+			</script>
+
 
 
     </div>
