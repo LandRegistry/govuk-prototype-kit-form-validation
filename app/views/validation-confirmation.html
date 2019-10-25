@@ -1,0 +1,75 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      
+
+      <form action="/form-handler" method="post" novalidate data-validate='my-form-validation'>
+
+	      <!-- text input -->
+	      <h1 class="govuk-heading-xl">Confirmation</h1>
+	      <p class="govuk-body-l">
+        If two fields match
+      	</p>
+	      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+	      {{ govukInput({
+				  label: {
+				    text: "password"
+				  },
+				  id: "password",
+				  name: "password"
+				}) }}
+
+
+				{{ govukInput({
+				  label: {
+				    text: "confirm password"
+				  },
+				  id: "password-confirmation",
+				  name: "password-confirmation"
+				}) }}
+
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+
+      <script type="application/json" id="my-form-validation">
+			  { 		
+			  	"password": {
+			  		"presence": {
+			        "message": "^please chose a password"
+			      }
+			    }, 	
+			  	"password-confirmation": {
+			  		"presence": {
+			        "message": "^please retype your chosen password"
+			      },
+			      "equality": {
+			        "attribute": "password",
+			        "message" : "^passwords do not match"
+			      }
+			    }
+			  }
+			</script>
+
+
+
+    </div>
+</div>
+
+{% endblock %}

@@ -30,7 +30,7 @@ function getSubmitHandler(form, constraints) {
     if(errors) {
       for (name in errors) {
         if (errors.hasOwnProperty(name)) {
-          raiseError(form, name, errors[name])
+          raiseError(form, name, errors[name][0])
         }
       }
     } else {
@@ -105,7 +105,7 @@ function errorSummary(errors) {
       var errorItem = document.createElement('li')
       var errorLink = document.createElement('a')
       errorLink.setAttribute('href', '#' + 'name')
-      errorLink.textContent = errors[name]
+      errorLink.textContent = errors[name][0]
       errorLink.addEventListener('click', function(e) {
         e.preventDefault()
         removeHiddenFormElements()
