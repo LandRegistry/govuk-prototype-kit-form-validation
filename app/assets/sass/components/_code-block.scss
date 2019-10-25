@@ -1,0 +1,19 @@
+.app-code {
+  font-size: 16px;
+  position: relative;
+  margin: 0;
+  padding: govuk-spacing(3);
+  overflow: auto;
+  border: 1px solid $govuk-border-colour;
+  background-color: govuk-colour("light-grey", $legacy: "grey-4");
+  max-width: 38em;
+  @include govuk-responsive-margin(5, "bottom");
+}
+
+
+.app-prose-scope {
+    color: #d13118;
+    background-color: #f3f2f1;
+    padding: 0 5px;
+    font-size: 19px;
+}
