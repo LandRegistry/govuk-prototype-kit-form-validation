@@ -10,28 +10,34 @@
       <h1 class="govuk-heading-xl">Getting started  </h1>
       <p class="govuk-body-l">Adding the validation code to the kit</p>
 
-      <h2 class="govuk-heading-m">1. Install the library</h2>
+      <h2 class="govuk-heading-m">Install the library</h2>
       <p class="govuk-body">Open terminal navigate to your repository</p>
       <p class="govuk-body">Enter the following code to install the <a href="https://validatejs.org/">validate.js</a> library</p>
       <pre class="app-code"><code>npm install validate.js</code></pre>
 
-      <h2 class="govuk-heading-m">2. Set up routes</h2>
+      <h2 class="govuk-heading-m">Set up routes</h2>
       <p class="govuk-body">With the prototype open your text editor, go to the app folder and the <code class="app-prose-scope"> routes.js</code> file</p>
       <p class="govuk-body">Under the 'Add your routes here' comment, add the following code:</p>
       <pre class="app-code"><code>router.use('/node_modules', express.static('node_modules'))</code></pre>
 
-      <h2 class="govuk-heading-m">3. Adding scripts</h2>
-      <p class="govuk-body">Now go to the <code class="app-prose-scope">views/includes</code> folder and open the scripts.html file. Add the following underneath the existing <code class="app-prose-scope">&lt;script&gt; src="/public/javascripts/jquery-1.11.3.js" &lt;/script&gt</p>
+      <h2 class="govuk-heading-m">Creating the javascript files</h2>
+      <p class="govuk-body">Go to <code class="app-prose-scope"> app/assets/javascripts</code> and create two new files, one called <code class="app-prose-scope">form-validation.js</code> and another called <code class="app-prose-scope"> custom-validator.js</code>.
+      Within the new file, add the following code and save:
+
+      <h2 class="govuk-heading-m">Adding scripts</h2>
+      <p class="govuk-body">We need to include the script files in the pages we create. So go to the <code class="app-prose-scope">views/includes</code> folder and open the <code class="app-prose-scope"> scripts.html</code> file.<br><br> Add the following underneath the existing jquery script:</p>
 
         <code class="app-prose-scope">
         &lt;script&gt; src="/node_modules/validate.js/validate.min.js" &lt;/script&gt <br>
         &lt;script&gt; src="/public/javascripts/custom-validator.js" &lt;/script&gt <br>
         &lt;script&gt; src="/public/javascripts/form-validation.js" &lt;/script&gt <br>
         </code>
+      <br>
 
-      <h2 class="govuk-heading-m">4. Adding the form validation javascript</h2>
-      <p class="govuk-body">Go to <code class="app-prose-scope"> app/assets/javascripts</code> and create a new file called <code> form-validation.js </code>.
-      Add the following files to the file and save:<br>
+
+
+
+
 
       </p>
 {% endblock %}
