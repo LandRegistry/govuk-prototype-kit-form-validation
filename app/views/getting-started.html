@@ -11,12 +11,12 @@
       <p class="govuk-body-l">Adding the validation code to the kit</p>
 
       <h2 class="govuk-heading-m">Install the library</h2>
-      <p class="govuk-body">Open terminal navigate to your repository</p>
+      <p class="govuk-body">On Mac, open terminal navigate to your repository</p>
       <p class="govuk-body">Enter the following code to install the <a href="https://validatejs.org/">validate.js</a> library</p>
       <pre class="app-code"><code>npm install validate.js</code></pre>
 
       <h2 class="govuk-heading-m">Set up routes</h2>
-      <p class="govuk-body">With the prototype open your text editor, go to the app folder and the <code class="app-prose-scope"> routes.js</code> file</p>
+      <p class="govuk-body">With the prototype open your text editor, open the <code class="app-prose-scope"> routes.js</code> file in your <code class="app-prose-scope">app</code> folder.</p>
       <p class="govuk-body">Under the 'Add your routes here' comment, add the following code:</p>
       <pre class="app-code"><code>router.use('/node_modules', express.static('node_modules'))</code></pre>
 
@@ -26,18 +26,14 @@
 
       <h2 class="govuk-heading-m">Adding scripts</h2>
       <p class="govuk-body">We need to include the script files in the pages we create. So go to the <code class="app-prose-scope">views/includes</code> folder and open the <code class="app-prose-scope"> scripts.html</code> file.<br><br> Add the following underneath the existing jquery script:</p>
-
+      <br>
         <code class="app-prose-scope">
         &lt;script&gt; src="/node_modules/validate.js/validate.min.js" &lt;/script&gt <br>
         &lt;script&gt; src="/public/javascripts/custom-validator.js" &lt;/script&gt <br>
         &lt;script&gt; src="/public/javascripts/form-validation.js" &lt;/script&gt <br>
         </code>
       <br>
+      <br>
 
-
-
-
-
-
-      </p>
+<a  class="govuk-body" href="getting-started_2.html"> Next (import the javascript files) </a>
 {% endblock %}
