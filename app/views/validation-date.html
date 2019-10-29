@@ -16,11 +16,13 @@
         Date Input
       </h1>
       <p class="govuk-body-l">
-       	basic validation for date - checks presence of the 3 fileds, and if the thing looks like a valod date - using moment.js
+       	Validation for date - checks presence of the 3 fields (day, month, year), and if the thing looks like a valid date - using moment.js
       </p>
       <p class="govuk-body-l">
        	This is not the same (complete) <a href="https://design-system.service.gov.uk/components/date-input/">validation and error messaging that the design system suggests</a> - but we think is good enough for basic proto work/testing with users.  The code can be extended to check/message for mast/future dates
       </p>
+
+      <p>Just put validation on the day input field (not all three fields)
 
       <hr>
 
@@ -43,14 +45,6 @@
 				  }
 				}) }}
 
-				{{ govukInput({
-				  label: {
-				    text: "another field"
-				  },
-				  id: "another",
-				  name: "another"
-				}) }}
-
         <button class="govuk-button" data-module="govuk-button">
           Continue
         </button>
@@ -65,9 +59,6 @@
 			  			"namePrefix": "passport-issued",
 			  			"message": "^Passport issued should be a valid date"
 			  		}
-			  	},
-			  	"another": {
-			  		"presence": true
 			  	}
 			  }
 			</script>
