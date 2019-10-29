@@ -14,8 +14,7 @@ if (!Element.prototype.closest) {
     return null;
   };
 }
-// TODO: Error summary
-// TODO: Extend this for other types of form elements not just inputs
+
 function getSubmitHandler(form, constraints) {
   return function submitHandler(e) {
     e.preventDefault()
@@ -53,7 +52,21 @@ function reset(element) {
   element.classList.remove('govuk-input--error')
   element.classList.remove('govuk-select--error')
   element.classList.remove('govuk-textarea--error')
-  element.parentNode.classList.remove('govuk-form-group--error')
+
+  var formGroup =  element.closest('.govuk-form-group')
+
+  if (element.classList.contains('govuk-date-input__input')) {
+  	// Date inputs are doubly grouped - we want the parent one
+  	formGroup = formGroup.parentNode.closest('.govuk-form-group')
+
+  	// Mark all date inputs in this group as errored, not just the one
+  	var allDateInputs = formGroup.querySelectorAll('.govuk-date-input__input')
+  	;[].forEach.call(allDateInputs, function(input) {
+  		input.classList.remove('govuk-input--error')
+  	})
+  }
+
+  formGroup && formGroup.classList.remove('govuk-form-group--error')
   var errorMessage = element.parentNode.querySelector('.govuk-error-message')
   errorMessage && errorMessage.parentNode.removeChild(errorMessage)
 }
@@ -61,6 +74,8 @@ function raiseError(form, name, error) {
   var elementErrorClass = false
   var element = NodeList.prototype.isPrototypeOf(form[name]) ? form[name][0] : form[name]
   var formGroup =  element.closest('.govuk-form-group')
+
+
   if (element.classList.contains('govuk-input')) {
     elementErrorClass = 'govuk-input--error'
   }
@@ -73,12 +88,27 @@ function raiseError(form, name, error) {
   if (elementErrorClass) {
     element.classList.add(elementErrorClass)
   }
+
+  if (element.classList.contains('govuk-date-input__input')) {
+  	// Date inputs are doubly grouped - we want the parent one
+  	formGroup = formGroup.parentNode.closest('.govuk-form-group')
+
+  	// Mark all date inputs in this group as errored, not just the one
+  	var allDateInputs = formGroup.querySelectorAll('.govuk-date-input__input')
+  	;[].forEach.call(allDateInputs, function(input) {
+  		input.classList.add(elementErrorClass)
+  	})
+  }
+
   formGroup.classList.add('govuk-form-group--error')
   var errorMessage = document.createElement('span')
   errorMessage.classList.add('govuk-error-message')
   errorMessage.innerHTML = '<span class="govuk-visually-hidden">Error:</span> ' + error
   if (element.classList.contains('govuk-radios__input')) {
     element.closest('.govuk-radios').parentNode.insertBefore(errorMessage, element.closest('.govuk-radios'))
+  } else if (element.classList.contains('govuk-date-input__input')) {
+  	var dateGroup = element.closest('.govuk-date-input')
+  	dateGroup.parentNode.insertBefore(errorMessage, dateGroup)
   } else if (element.classList.contains('govuk-checkboxes__input')) {
     element.closest('.govuk-checkboxes').parentNode.insertBefore(errorMessage, element.closest('.govuk-checkboxes'))
   } else {
