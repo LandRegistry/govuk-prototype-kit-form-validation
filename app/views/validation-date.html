@@ -1,0 +1,71 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Date Input
+      </h1>
+      <p class="govuk-body-l">
+       	Validation for date - checks presence of the 3 fields (day, month, year), and if the thing looks like a valid date - using moment.js
+      </p>
+      <p class="govuk-body-l">
+       	This is not the same (complete) <a href="https://design-system.service.gov.uk/components/date-input/">validation and error messaging that the design system suggests</a> - but we think is good enough for basic proto work/testing with users.  The code can be extended to check/message for mast/future dates
+      </p>
+
+      <p>Just put validation on the day input field (not all three fields)
+
+      <hr>
+
+      <form action="/form-handler" method="post" novalidate data-validate='my-form-validation'>
+
+	      {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+				{{ govukDateInput({
+				  id: "passport-issued",
+				  namePrefix: "passport-issued",
+				  fieldset: {
+				    legend: {
+				      text: "When was your passport issued?",
+				      isPageHeading: true,
+				      classes: "govuk-fieldset__legend--xl"
+				    }
+				  },
+				  hint: {
+				    text: "For example, 12 11 2007"
+				  }
+				}) }}
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+
+      <script type="application/json" id="my-form-validation">
+
+			  { 		
+			  	"passport-issued-day": {
+			  		"date": {
+			  			"namePrefix": "passport-issued",
+			  			"message": "^Passport issued should be a valid date"
+			  		}
+			  	}
+			  }
+			</script>
+
+
+
+    </div>
+</div>
+
+{% endblock %}
