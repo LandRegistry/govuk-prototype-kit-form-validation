@@ -17,7 +17,7 @@
       </h1>
       <p class="govuk-body-l">
 			There are various types of validation you can do - for example, to ensure the field isn't blank, if a checkbox or radio button has been selected, if what's entered is long enough, if it's a pattern like a postcode.</p>
-      <p>If you want to constrain or validate how much text can be inputted - there are also other ways to do this, such as setting a field length attribute (minlength or maxlength), or using the character count govuk code for the text area.</p>
+
       <p>The validation uses the javascript library validate.js, which contains all these <a href="https://validatejs.org/#validators">standard validators and the ability to create custom validation rules</a>.  The documentation can be hard to read - to translate into how to use in this kit, so we've included common examples.</p>
       <p>If you need help, ask Ros or Andy.</p>
       <p>If you find a bug, make a new example, or can improve this documentation - <a href="https://github.com/LandRegistry/govuk-prototype-kit-form-validation">please grab it, and merge</a> your lovely improvement in.</p>
@@ -26,20 +26,25 @@
 
       <p><a href="getting-started.html" class="govuk-body">Follow the setup guide</a></p>
 
-      <h2 class="govuk-heading-l">Adding validation rules to an input field</h2>
-      <p>Now your are ready to add validation to your individual form pages</p>
+      <h2 class="govuk-heading-l" id="component-rules">Adding validation rules to an input component</h2>
+      <p>Now you are ready to add validation to your individual form pages</p>
+
 
       <h3 name="setup" class="govuk-heading-m">Example input fields and types of validation</h3>
 
+      <p>We'll be improving these, and adding more, examples</p>
+
 			<ul class="govuk-list govuk-list--bullet">
-			  <li>Text input: <br>is not empty, length, email address, <a href="validation-confirmation">two fields match (passwords)</a></li>
-			  <li>Radios: <br>one has been selected, <a href="validation-conditionally-required">conditional information exists</a></li>
-			  <li>Checkboxes: <br>one has been selected</li>
-			  <li>Textarea: <br>is not empty</li>
-			  <li>Select: <br>an item has been selected</li>
-			  <li>Date input pattern: <br><a href="validation-date">fields are not empty/date is valid</a></li>
-			  <li>Fieldset - multiple fields like address: <br>fields are not empty, is a postcode</li>
+			  <li><b>Text input:</b> <br>is not empty, length, email address, <a href="validation-confirmation">two fields match (passwords)</a></li>
+			  <li><b>Radios:</b> <br>one has been selected, <a href="validation-conditionally-required">conditional information exists</a></li>
+			  <li><b>Checkboxes:</b> <br>one has been selected</li>
+			  <li><b>Textarea:</b> <br>is not empty</li>
+			  <li><b>Select:</b> <br>an item has been selected</li>
+			  <li><b>Date input pattern:</b> <br><a href="validation-date">fields are not empty/date is valid</a></li>
+			  <li><b>Fieldset - multiple fields like address:</b> <br>fields are not empty, is a postcode</li>
 			</ul>
+
+			<p>Also have a look at the source code of the <a href="validation-example">big example page</a></p>
 
 
 
