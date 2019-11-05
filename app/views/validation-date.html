@@ -20,11 +20,10 @@
       </p>
       <div class="govuk-inset-text">
 	      <p>
-	       	This is not the same (complete) <a href="https://design-system.service.gov.uk/components/date-input/">validation and error messaging that the design system suggests</a> - but we think is good enough for basic proto work/testing with users.  The code can be extended to check/message for mast/future dates
+	       	This is not the same (complete) <a href="https://design-system.service.gov.uk/components/date-input/">validation and error messaging that the design system suggests</a> - but we think is good enough for basic proto work/testing with users.  The code can be extended to check for past and future dates
 	      </p>
 	    </div>
 
-      <p>Just put validation on the day input field (not all three fields)
 
       <hr>
 
@@ -65,7 +64,17 @@
 			  }
 			</script>
 
+			<h3 class="govuk-heading-m govuk-!-margin-top-9">Make this page yourself / add this to your page</h3>
 
+			<p><a href="validation-page-template">Set the page up right</a></p>
+
+			<p>add your <a href="https://design-system.service.gov.uk/components/date-input/">date boxes (Nunjucks) or HTML version</a></p>
+
+			<p>add the validation script block<img alt="source code of this page" width="100%" src="public/images/validation-json-date-input.png"></p>
+
+			<p>the validation json is set only on the first input box (day).  The custom code in app/assets/javascripts/date-validator.js does the rest, checking all three inputs and and highlighting the errors as per the design system.</p>
+
+			<p>View the source of this page in the browser, or <span class="govuk-visually-hidden">view the page source code</span> <a href="https://github.com/LandRegistry/govuk-prototype-kit-form-validation/blob/master/app/views/validation-date.html"> on github</a></p>
 
     </div>
 </div>

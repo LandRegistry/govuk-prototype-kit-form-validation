@@ -15,11 +15,7 @@
       <h1 class="govuk-heading-xl">
         Conditional content
       </h1>
-      <p class="govuk-body-l">
-        If information is required due to the option choses - e.g. text input is required becaue of a radio choice
-      </p>
 
-      <hr>
 
       <form action="/form-handler" method="post" novalidate data-validate='my-form-validation'>
 
@@ -145,7 +141,17 @@
 			  }
 			</script>
 
+			<h3 class="govuk-heading-m govuk-!-margin-top-9">Make this page yourself / add this to your page</h3>
 
+			<p><a href="validation-page-template">Set the page up right</a></p>
+
+			<p>add your <a href="https://design-system.service.gov.uk/components/radios/index.html#conditionally-revealing-content">radios and inputs boxes (Nunjucks) or HTML version</a></p>
+
+			<p>add the validation script block for these two fields<img alt="source code of this page" width="100%" src="public/images/validation-json-conditional.png"></p>
+
+			<p>the json tells the validator to 1) check that a radio option is selected, and 2) check the input box for the selected option is not blank.</p>
+
+			<p>View the source of this page in the browser, or <span class="govuk-visually-hidden">view the page source code</span> <a href="https://github.com/LandRegistry/govuk-prototype-kit-form-validation/blob/master/app/views/validation-conditionally-required.html"> on github</a></p>
 
     </div>
 </div>
