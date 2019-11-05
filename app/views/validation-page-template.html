@@ -20,7 +20,7 @@
 
     	<p>This example shows the Nunjucks macro version of the design system components - if you are using the HMTL code, ignore the Nunjucks steps below</p>
 
-    	<p><img width="100%" src="public/images/template-source.png"></p>
+    	<p><img alt="source code of this page" width="100%" src="public/images/template-source.png"></p>
 
     	<p>We have a basic template page from the kit - with 2/3rds layout, and we have added a form and a button</p>
     	<p>line 10 - 
@@ -29,7 +29,7 @@
       </p>
       <p>line 15 - <span class="app-prose-scope"><code>&lt;form action=&quot;/form-handler&quot; method=&quot;post&quot; novalidate data-validate=&apos;my-form-validation&apos;&gt;</code></span>.  We are using a form, and we are POSTing the form.  The form POSTS, for us, to a route where we can do server side code - for example we would want to <a href="/docs/examples/branching">branch to different pages depending on a radio choice</a>. You can set the action to the next page in your journey.
       <p>The <span class="app-prose-scope"><code>novalidate</code></span> attribute is needed, (to disable any form validation other than ours), and we tell the form to use our validation code with the <span class="app-prose-scope"><code>data-validate=&apos;my-form-validation&apos;</code></span> attribute</p>
-      <p>lines 20 to 29 are the Nunjucks code for a text input box.  The name attribute is important.  Repalce these with your HMTL if not using the Nunjucks in the design system</p>
+      <p>lines 20 to 29 are the Nunjucks code for a text input box.  The name attribute is important.  Replace these with your HMTL if not using the Nunjucks in the design system</p>
       <p>lines 37 to 45 are the validation rules. You need the <span class="app-prose-scope"><code>&lt;script type=&quot;application/json&quot; id=&quot;my-form-validation&quot;&gt;</code></span> to be as shown here, ensuring the value of the id matches the data-validate attribute of the form tag.</p>
       <p>This script tag and json contents, can be copied from our <a href="validation-documentation#component-rules">validation examples</a>, and from the <a href="https://validatejs.org/#validators">validate.js documentation</a></p>
       <p>This specific validation json says: 
