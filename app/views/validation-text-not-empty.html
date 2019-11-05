@@ -32,9 +32,6 @@
           Continue
         </button>
 
-
-        <p><a href="">show me how to add this validation to my page</a></p>
-
       </form>
 
       <script type="application/json" id="my-form-validation">
@@ -46,6 +43,23 @@
 			    }
 			  }
 			</script>
+
+			<h3 class="govuk-heading-m govuk-!-margin-top-9">Make this page yourself / add this to your page</h3>
+			<p><a href="validation-page-template">Set the page up right</a>, and then add the following validation script block</p>
+			<p class="app-prose-scope">
+        <code >
+        	&lt;script type=&quot;application&sol;json&quot; id=&quot;my-form-validation&quot;&gt;<br>
+			  &nbsp;&nbsp;&lbrace;<br>		
+			  	&nbsp;&nbsp;&nbsp;&nbsp;&quot;event-name&quot;: &lbrace;<br>
+			      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;presence&quot;: &lbrace;<br>
+			      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;message&quot;: &quot;^Enter an event name&quot;<br>
+			      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;<br>
+			    &nbsp;&nbsp;&nbsp;&nbsp;&rbrace;<br>
+			  &nbsp;&nbsp;&rbrace;<br>
+			&lt;&sol;script&gt;
+
+        </code>
+      </p>
 
     </div>
 </div>
