@@ -1,4 +1,5 @@
 // Core dependencies
+const fs = require('fs')
 const path = require('path')
 
 // NPM dependencies
@@ -31,11 +32,9 @@ var useV6 = false
 var v6App
 var v6Routes
 
-try {
+if (fs.existsSync('./app/v6/routes.js')) {
   v6Routes = require('./app/v6/routes.js')
   useV6 = true
-} catch (e) {
-  // No routes.js in app/v6 so we can continue with useV6 false
 }
 
 const app = express()
@@ -49,9 +48,8 @@ if (useV6) {
 // Set cookies for use in cookie banner.
 app.use(cookieParser())
 documentationApp.use(cookieParser())
-const handleCookies = utils.handleCookies(app)
-app.use(handleCookies)
-documentationApp.use(handleCookies)
+app.use(utils.handleCookies(app))
+documentationApp.use(utils.handleCookies(documentationApp))
 
 // Set up configuration variables
 var releaseVersion = packageJson.version
@@ -59,7 +57,6 @@ var env = (process.env.NODE_ENV || 'development').toLowerCase()
 var useAutoStoreData = process.env.USE_AUTO_STORE_DATA || config.useAutoStoreData
 var useCookieSessionStore = process.env.USE_COOKIE_SESSION_STORE || config.useCookieSessionStore
 var useHttps = process.env.USE_HTTPS || config.useHttps
-var gtmId = process.env.GOOGLE_TAG_MANAGER_TRACKING_ID
 
 useHttps = useHttps.toLowerCase()
 
@@ -160,17 +157,7 @@ if (useV6) {
   app.use('/public/v6/javascripts/govuk/', express.static(path.join(__dirname, '/node_modules/govuk_frontend_toolkit/javascripts/govuk/')))
 }
 
-// Add global variable to determine if DoNotTrack is enabled.
-// This indicates a user has explicitly opted-out of tracking.
-// Therefore we can avoid injecting third-party scripts that do not respect this decision.
-app.use(function (req, res, next) {
-  // See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/DNT
-  res.locals.doNotTrackEnabled = (req.header('DNT') === '1')
-  next()
-})
-
 // Add variables that are available in all views
-app.locals.gtmId = gtmId
 app.locals.asset_path = '/public/'
 app.locals.useAutoStoreData = (useAutoStoreData === 'true')
 app.locals.useCookieSessionStore = (useCookieSessionStore === 'true')
