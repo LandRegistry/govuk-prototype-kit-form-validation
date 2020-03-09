@@ -1,8 +1,9 @@
 # Show the user's answers on your 'Check your answers' page
 
-If you do research with real user data, you must [open a new incognito window](https://support.google.com/chrome/answer/95464) for each research session, and close all windows before the next session.
+If you do research with real user data, you must clear a user's data before each session by either:
 
-After the session is over, select the **Clear data** link at the bottom of the prototype to clear the user’s data.
+- closing all browser windows and [opening a new incognito window](https://support.google.com/chrome/answer/95464)
+- selecting the **Clear data** link at the bottom of the prototype
 
 Check you’ve cleared the data by returning to a previously-loaded page and making sure the data is gone.
 
@@ -17,7 +18,7 @@ To display user data on a different page, use this [Nunjucks](https://mozilla.gi
 Change `INPUT-ATTRIBUTE-NAME` to the value you used in the [`name` attribute on the question page](/docs/make-first-prototype/add-questions#add-a-text-input-to-question-2). For example:
 
 ```
-{{ data['number-of-balls'] }}
+{{ data['how-many-balls'] }}
 ```
 
 ### Show the answer to question 1
@@ -25,7 +26,7 @@ Change `INPUT-ATTRIBUTE-NAME` to the value you used in the [`name` attribute on 
 1. Open the `check-your-answers.html` file in your `app/views` folder.
 2. Find the `<dt>` tag that contains the text `Name`.
 3. Change `Name` to `Number of balls you can juggle`.
-4. In the `<dd>` tag on the next line, change `Sarah Philips` to `{{ data['how-many-balls’] }}`.
+4. In the `<dd>` tag on the next line, change `Sarah Philips` to `{{ data['how-many-balls'] }}`.
 
 You must also change `<span class="govuk-visually-hidden"> name</span>` to `<span class="govuk-visually-hidden"> number of balls you can juggle</span>`.
 
