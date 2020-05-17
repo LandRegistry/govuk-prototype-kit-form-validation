@@ -22,7 +22,7 @@ validate.validators.date = function(value, options, key, attributes) {
   var year = document.querySelector('[name=' + options.namePrefix + '-year]')
 
   var dateIsValid = moment(day.value.padStart(2, '0') + '/' + month.value.padStart(2, '0') + '/' + year.value, 'DD/MM/YYYY', true).isValid()
-  console.log(day.value.padStart(2, '0') + '/' + month.value.padStart(2, '0') + '/' + year.value, dateIsValid)
+//  console.log(day.value.padStart(2, '0') + '/' + month.value.padStart(2, '0') + '/' + year.value, dateIsValid)
  
  	if (!dateIsValid) {
  		return options.message ? options.message : 'should be a valid date'
