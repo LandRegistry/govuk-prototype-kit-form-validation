@@ -134,12 +134,19 @@ function errorSummary(errors) {
     if (errors.hasOwnProperty(name)) {
       var errorItem = document.createElement('li')
       var errorLink = document.createElement('a')
-      errorLink.setAttribute('href', '#' + 'name')
+      errorLink.setAttribute('href', '#' + name)
       errorLink.textContent = errors[name][0]
       errorLink.addEventListener('click', function(e) {
         e.preventDefault()
         removeHiddenFormElements()
         var formGroup = document.querySelector('[name="' + this + '"]').closest('.govuk-form-group')
+        var targetElement = document.getElementById(this)
+        // date inputs are doubly grouped - we want the parent
+        if (targetElement.classList.contains('govuk-date-input__input')) {
+        	formGroup = formGroup.parentNode.closest('.govuk-form-group')
+        }
+        // put keyboard focus in the form control
+        targetElement.focus()
         window.scrollTo(0, formGroup.offsetTop)
       }.bind(name))
       errorItem.appendChild(errorLink)
