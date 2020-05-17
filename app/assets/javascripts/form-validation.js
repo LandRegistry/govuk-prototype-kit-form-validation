@@ -141,6 +141,10 @@ function errorSummary(errors) {
         removeHiddenFormElements()
         var formGroup = document.querySelector('[name="' + this + '"]').closest('.govuk-form-group')
         var targetElement = document.getElementById(this)
+        // date inputs are doubly grouped - we want the parent
+        if (targetElement.classList.contains('govuk-date-input__input')) {
+        	formGroup = formGroup.parentNode.closest('.govuk-form-group')
+        }
         // put keyboard focus in the form control
         targetElement.focus()
         window.scrollTo(0, formGroup.offsetTop)
