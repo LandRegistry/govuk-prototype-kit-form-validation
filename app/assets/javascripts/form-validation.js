@@ -140,6 +140,9 @@ function errorSummary(errors) {
         e.preventDefault()
         removeHiddenFormElements()
         var formGroup = document.querySelector('[name="' + this + '"]').closest('.govuk-form-group')
+        var targetElement = document.getElementById(this)
+        // put keyboard focus in the form control
+        targetElement.focus()
         window.scrollTo(0, formGroup.offsetTop)
       }.bind(name))
       errorItem.appendChild(errorLink)
