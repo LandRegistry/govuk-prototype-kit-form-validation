@@ -42,4 +42,14 @@ You must also change `<span class="govuk-visually-hidden"> date of birth</span>`
 
 Go to http://localhost:3000/start and answer the questions to check the answer to question 2 works.
 
+### Delete the remaining example answers
+
+There are example answers on the ‘Check your answers’ template page that you do not need. You can delete these example answers from the `check-your-answers.html` file.
+
+1. Find and delete the section that starts with `<div class="govuk-summary-list__row">` and contains `Contact information`.
+
+2. Find and delete the section that starts with `<div class="govuk-summary-list__row">` and contains `Contact details`.
+
+3. Delete everything from the line that contains `Application details` down to the line that contains `Now send your application`.
+
 [Next (Let the user change their answers)](let-user-change-answers)
