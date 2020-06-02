@@ -1,10 +1,10 @@
 # GOV.UK Prototype Kit with form validation
 
-This is a copy of the GOV.UK prototype kit, version 9.6.0, with form validation.
+This is a copy of the GOV.UK prototype kit, version 9.7.0, with form validation.
 
 This repo and the [running heroku proto](https://gov-proto-kit-form-validation.herokuapp.com/) is to show how to include form validation into your version of the kit.
 
-If GOV.UK is still on version 9.6.0 you could copy this repo to make your prototype from.
+If GOV.UK is still on version 9.7.0 you could copy this repo to make your prototype from.
 
 
 If you need the latest kit
